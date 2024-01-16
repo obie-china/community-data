@@ -1,0 +1,44 @@
+name: Run Python Scraper
+
+on:
+  workflow_dispatch:
+    inputs:
+      run-scraper:
+        description: 'Run Python Scraper'
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y jq
+        sudo apt-get install -y yarn
+        sudo apt-get install -y make
+        yarn add dsv
+
+    - name: Set up virtual environment
+      run: |
+        cd process/python/farmfresh/scraper
+        python3 -m venv .venv
+        source .venv/bin/activate
+      
+    - name: Create OUT folder
+      run: mkdir -p mkdir -p process/python/farmfresh/scraper/OUT
+
+    - name: Run Python Scraper
+      run: |
+        cd process/python/farmfresh/scraper
+        python3 product_ids.py
+      
