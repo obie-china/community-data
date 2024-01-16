@@ -38,7 +38,7 @@ jobs:
       run: mkdir -p OUT
 
     - name: Run Python Scraper
-      run:
+      run: |
         cd process/python/farmfresh/scraper
         make
       
