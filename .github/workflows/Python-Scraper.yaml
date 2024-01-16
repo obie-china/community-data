@@ -39,6 +39,6 @@ jobs:
 
     - name: Run Python Scraper
       run: |
-        cd process/python/farmfresh/scraper
+        # cd process/python/farmfresh/scraper
         python3 product_ids.py
       
