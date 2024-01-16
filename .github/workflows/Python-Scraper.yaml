@@ -35,7 +35,9 @@ jobs:
         source .venv/bin/activate
       
     - name: Create OUT folder
-      run: mkdir -p OUT
+      run: |
+        cd process/python/farmfresh/scraper
+        mkdir -p OUT
 
     - name: Run Python Scraper
       run: |
