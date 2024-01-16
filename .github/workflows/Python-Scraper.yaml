@@ -38,6 +38,6 @@ jobs:
       run: mkdir -p OUT
 
     - name: Run Python Scraper
-      run: |
-        python3 product_ids.py
+      run:
+        make build
       
