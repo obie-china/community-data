@@ -39,5 +39,6 @@ jobs:
 
     - name: Run Python Scraper
       run:
-        makefile build
+        cd process/python/farmfresh/scraper
+        make
       
