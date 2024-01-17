@@ -9,6 +9,10 @@ on:
 
 jobs:
   build:
+    defaults:
+      run:
+        working-directory: process/python/farmfresh/scraper
+
     runs-on: ubuntu-latest
 
     steps:
