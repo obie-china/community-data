@@ -40,8 +40,11 @@ jobs:
       
     - name: Create OUT folder
       run: |
-        mkdir -p OUT
-        touch .gitkeep
+        file="./OUT/.gitkeep"
+        mkdir -p "${file%/*}" && touch "$file"
+      
+        # mkdir -p OUT
+        # touch .gitkeep
 
     - name: Run Python Scraper
       run: make
