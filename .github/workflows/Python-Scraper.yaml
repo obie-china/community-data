@@ -50,7 +50,8 @@ jobs:
 
     - name: Commit and push changes
       run: |
+        git config --global user.email "iyi.obiechina@gmail.com"
+        git config --global user.name "obie-china"
         git add .
         git commit -m "Update data via GitHub Actions"
         git push
-      
