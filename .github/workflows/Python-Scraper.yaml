@@ -9,6 +9,10 @@ on:
 
 jobs:
   build:
+    defaults:
+      run:
+        working-directory: process/python/farmfresh/scraper
+        
     runs-on: ubuntu-latest
 
     steps:
@@ -30,17 +34,23 @@ jobs:
 
     - name: Set up virtual environment
       run: |
-        cd process/python/farmfresh/scraper
+        # cd process/python/farmfresh/scraper
         python3 -m venv .venv
         source .venv/bin/activate
       
     - name: Create OUT folder
       run: |
-        cd process/python/farmfresh/scraper
         mkdir -p OUT
+        
 
     - name: Run Python Scraper
+      run: make
+        # cd process/python/farmfresh/scraper
+        # make
+
+    - name: Commit and push changes
       run: |
-        cd process/python/farmfresh/scraper
-        make
+        git add .
+        git commit -m "Update data via GitHub Actions"
+        git push
       
