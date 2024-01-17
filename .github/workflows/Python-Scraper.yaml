@@ -47,7 +47,9 @@ jobs:
         # touch .gitkeep
 
     - name: Run Python Scraper
-      run: make
+      run: |
+        make clean
+        make all
         # cd process/python/farmfresh/scraper
         # make
 
