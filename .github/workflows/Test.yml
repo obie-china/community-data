@@ -44,5 +44,5 @@ jobs:
         yarn add dsv
 
     - name: Run Makefile
-      run: make onfarmmarkets
+      run: make clean
       # make all
