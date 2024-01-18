@@ -44,5 +44,12 @@ jobs:
         yarn add dsv
 
     - name: Run Makefile
-      run: make clean
-      # make all
+      run: make all
+
+    - name: Commit and push changes
+      run:  |
+        git config --global user.email "iyi.obiechina@gmail.com"
+        git config --global user.name "obie-china"
+        git add .
+        git commit -m "Update data via GitHub Actions"
+        git push
