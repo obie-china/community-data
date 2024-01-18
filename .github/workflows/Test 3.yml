@@ -1,0 +1,42 @@
+name: Run Script
+
+on:
+  workflow_dispatch:
+    inputs:
+      run-scraper:
+        description: 'Run Script'
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y jq
+        sudo apt-get install -y yarn
+        sudo apt-get install -y make
+        yarn add dsv
+
+    - name: Run Script
+      run: make all
+      working-directory: process/python/farmfresh/scraper
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.email "iyi.obiechina@gmail.com"
+        git config --global user.name "obie-china"
+        git add .
+        git commit -m "Update data via GitHub Actions"
+        git push
+
