@@ -47,9 +47,9 @@ jobs:
       run: make all
 
     - name: Commit and push changes
-      run:  |
+      run: |
         git config --global user.email "iyi.obiechina@gmail.com"
         git config --global user.name "obie-china"
-        git add .
-        git commit -m "Update data via GitHub Actions"
+        git add ../../../../us/state/*/*.{csv,json}
+        git commit -m "Update data via GitHub Actions" -- ../../../../us/state/{all,null}
         git push
