@@ -33,7 +33,6 @@ merge:
 	jq -r '(map(keys) | add | unique) as $$cols | map(. as $$row | $$cols | map($$row[.])) as $$rows | $$cols, $$rows[] | @csv' $(MERGED)/merged.json > $(MERGED)/merged.csv
 
 split-by-state:
-	chmod +x split-by-state.sh
 	INPUT=$(MERGED)/merged.json OUTPUT=$(STATES) ./split-by-state.sh
 
 finalize:
